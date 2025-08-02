@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  flexora-app:
+    build:
+      context: .
+      target: deps
+    container_name: flexora-dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+    command: npm run dev
+    restart: unless-stopped
+
+  # Optional: Local database for development (if you want to test without Supabase)
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: flexora-db
+  #   environment:
+  #     POSTGRES_DB: flexora_dev
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+
+# volumes:
+#   postgres_data: 
