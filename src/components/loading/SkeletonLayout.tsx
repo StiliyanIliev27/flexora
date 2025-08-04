@@ -9,12 +9,13 @@ interface SkeletonSection {
 }
 
 interface SkeletonElement {
-  type: 'skeleton' | 'text' | 'button' | 'input' | 'image' | 'spinner' | 'divider'
+  type: 'skeleton' | 'text' | 'button' | 'input' | 'image' | 'spinner' | 'divider' | 'custom' | 'grid'
   width?: string | number
   height?: string | number
   className?: string
   count?: number // For repeating elements
   text?: string // For static text
+  children?: SkeletonElement[] // For nested elements
 }
 
 interface SkeletonLayoutProps {
@@ -259,7 +260,9 @@ export function SkeletonLayout({
   className = ""
 }: SkeletonLayoutProps) {
   // Use preset or custom sections
-  const layoutConfig = sections ? { navigation, sections } : LAYOUT_PRESETS[layout] || LAYOUT_PRESETS.dashboard
+  const layoutConfig = sections 
+    ? { navigation, sections } 
+    : (layout === 'custom' ? LAYOUT_PRESETS.dashboard : LAYOUT_PRESETS[layout]) || LAYOUT_PRESETS.dashboard
   
   return (
     <div className={`min-h-screen bg-gray-50 ${className}`}>
@@ -289,7 +292,7 @@ export function SkeletonLayout({
       )}
 
       {/* Render sections */}
-      {!showSpinner && layoutConfig.sections?.map((section, index) => 
+      {!showSpinner && layoutConfig.sections?.map((section: SkeletonSection, index: number) => 
         renderSkeletonSection(section, index)
       )}
     </div>
