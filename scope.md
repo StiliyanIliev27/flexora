@@ -44,6 +44,8 @@ A smart gym planner SaaS application with two main layers:
 - ✅ Initialize project with chosen tech stack (Next.js 14, TypeScript, Tailwind CSS, Supabase)
 - ✅ Set up development environment and build tools (**Local npm development** + Docker option available)
 - ✅ **Shadcn UI integration** (Modern component library with accessibility)
+- ✅ **Abstract skeleton loading system** (SkeletonLayout with presets)
+- ✅ **Project rules & guidelines** (.cursor/rules for Cursor AI)
 - ⏳ Configure CI/CD pipeline basics (Deferred to later phase)
 - ✅ Establish folder structure and coding standards (Modern React structure, TypeScript)
 - ✅ Set up version control and branching strategy (Git repository initialized)
