@@ -10,8 +10,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [profile, setProfile] = useState<UserProfile | null>(null)
   const [loading, setLoading] = useState(true)
-  const supabase = createBrowserSupabaseClient()
-
+    const supabase = createBrowserSupabaseClient()
+  
   useEffect(() => {
     // Get initial session
     const getInitialSession = async () => {
@@ -32,21 +32,38 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     getInitialSession()
 
-    // Listen for auth changes
+    // Listen for auth changes including token refresh
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        if (session?.user) {
-          setUser(session.user as AuthUser)
-          await fetchUserProfile(session.user.id)
-        } else {
+        // Handle all auth events including token refresh
+        if (event === 'TOKEN_REFRESHED') {
+          // For token refresh, only update user but keep existing profile
+          if (session?.user) {
+            setUser(session.user as AuthUser)
+            // Don't clear profile during token refresh - just silently update it
+            fetchUserProfile(session.user.id) // No await - runs in background
+          }
+        } else if (event === 'SIGNED_IN') {
+          // For sign in, update both user and profile
+          if (session?.user) {
+            setUser(session.user as AuthUser)
+            await fetchUserProfile(session.user.id)
+          }
+        } else if (event === 'SIGNED_OUT') {
           setUser(null)
           setProfile(null)
         }
-        setLoading(false)
+        
+        // Only set loading false for non-refresh events
+        if (event !== 'TOKEN_REFRESHED') {
+          setLoading(false)
+        }
       }
     )
 
-    return () => subscription.unsubscribe()
+    return () => {
+      subscription.unsubscribe()
+    }
   }, [])
 
   const fetchUserProfile = async (userId: string) => {

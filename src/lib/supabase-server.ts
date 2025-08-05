@@ -6,19 +6,21 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 // Server-side Supabase client
-export const createServerSupabaseClient = () =>
-  createServerClient(
+export const createServerSupabaseClient = async () => {
+  const cookieStore = await cookies()
+  
+  return createServerClient(
     supabaseUrl,
     supabaseAnonKey,
     {
       cookies: {
         getAll() {
-          return cookies().getAll()
+          return cookieStore.getAll()
         },
         setAll(cookiesToSet) {
           try {
             cookiesToSet.forEach(({ name, value, options }) =>
-              cookies().set(name, value, options)
+              cookieStore.set(name, value, options)
             )
           } catch {
             // The `setAll` method was called from a Server Component.
@@ -29,6 +31,7 @@ export const createServerSupabaseClient = () =>
       },
     }
   )
+}
 
 // Admin client for server actions
 export const createAdminSupabaseClient = () =>

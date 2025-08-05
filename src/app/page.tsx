@@ -78,43 +78,10 @@ export default function HomePage() {
     )
   }
 
-  // Dashboard for authenticated users
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-blue-600">Flexora</h1>
-          <div className="flex items-center space-x-4">
-            <span className="text-gray-700">
-              Welcome, {profile?.full_name || user.email}!
-            </span>
-            <Button variant="outline" onClick={signOut}>
-              Sign Out
-            </Button>
-          </div>
-        </div>
-      </nav>
-
-      <main className="container mx-auto px-4 py-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Welcome to your fitness journey! 🏋️‍♂️
-          </h2>
-          <p className="text-gray-600 mb-8">
-            You're successfully authenticated. The full app features are coming soon!
-          </p>
-          
-          <div className="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
-            <h3 className="text-lg font-semibold mb-4">Your Profile</h3>
-            <div className="space-y-2 text-left">
-              <p><span className="font-medium">Email:</span> {user.email}</p>
-              <p><span className="font-medium">Name:</span> {profile?.full_name || 'Not set'}</p>
-              <p><span className="font-medium">Role:</span> {profile?.role || 'user'}</p>
-              <p><span className="font-medium">Joined:</span> {new Date(profile?.created_at || '').toLocaleDateString()}</p>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  )
+  // Redirect authenticated users to dashboard
+  if (typeof window !== 'undefined') {
+    window.location.href = '/dashboard'
+  }
+  
+  return null
 }

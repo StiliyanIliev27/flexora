@@ -94,6 +94,9 @@ A smart gym planner SaaS application with two main layers:
   - Quick action buttons and command palette
   - Profile/settings access patterns
   - Notification and alert systems
+  - Role switcher component (User/Instructor layers)
+  - Multi-language support system (English/Bulgarian)
+  - Theme toggle system (Dark/Light mode)
 - Plan reusable component library structure
 - Define consistent spacing, typography, and color schemes
 
@@ -106,15 +109,31 @@ A smart gym planner SaaS application with two main layers:
 
 ### 2.5 Design System Implementation
 - Create wireframes and mockups for key screens
-- Implement responsive layout foundation
-- Build core navigation and dashboard components
+- Implement responsive layout foundation using Shadcn Sidebar-07 template
+- Build core navigation and dashboard components:
+  - Collapsible sidebar with icon-only mode and hover expansion
+  - Auto-collapse behavior on mobile devices
+  - Role switcher dropdown (User/Instructor layers) replacing team switcher
+  - Header controls implementation:
+    * Theme toggle with per-user persistence
+    * Language switcher with flag icons + text labels
+    * Notification indicator with red dot for unread items
+  - Dynamic breadcrumb navigation system (clickable, updates per page)
 - Set up design tokens and styling system
+- Implement internationalization foundation:
+  * Immediate language switching (English/Bulgarian)
+  * Extensible for additional languages
+  * Flag icons with text labels for language selection
 - Test layouts across different devices and screen sizes
 
 **🎨 Deliverables:**
 - ✅ UI/UX research document with inspiration and best practices
 - ✅ Wireframes for main authenticated screens (desktop & mobile)
+- ✅ Shadcn Sidebar-07 template integration and customization
 - ✅ Component library foundation with core navigation elements
+- ✅ Role-based interface system (User/Instructor layer switching)
+- ✅ Multi-language support foundation (English/Bulgarian)
+- ✅ Theme system implementation (Dark/Light mode with per-user persistence)
 - ✅ Responsive layout system implementation
 - ✅ User flow documentation for authenticated experience
 
@@ -239,6 +258,21 @@ A smart gym planner SaaS application with two main layers:
 - Quick assignment tools
 - Plan effectiveness tracking
 - Client-specific modifications
+
+### 2.6 Internationalization & Accessibility
+- Multi-language support system implementation:
+  - Immediate language detection and switching
+  - Translation key management system
+  - Right-to-left (RTL) language support foundation
+  - User language preference persistence
+  - Dynamic content translation
+  - Extensible language support architecture (starting with English/Bulgarian)
+  - Flag icons with text labels for language selection
+- Accessibility enhancements:
+  - ARIA labels and screen reader support
+  - Keyboard navigation optimization
+  - Color contrast and visual accessibility
+  - Focus management and trap systems
 
 ## Phase 8: Advanced Features & Scheduling (Weeks 18-20)
 
