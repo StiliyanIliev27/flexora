@@ -71,11 +71,8 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto space-y-6">
-      <div className="text-center">
-        <h2 className="text-3xl font-bold text-gray-900">Create account</h2>
-        <p className="mt-2 text-gray-600">Start your fitness journey with Flexora</p>
-      </div>
+    <div className="w-full space-y-6">
+      {/* Remove header since it's handled by the parent page */}
 
       <Button
         onClick={handleGoogleSignUp}
@@ -106,10 +103,10 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
 
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t border-gray-300" />
+          <div className="w-full border-t border-border" />
         </div>
         <div className="relative flex justify-center text-sm">
-          <span className="px-2 bg-white text-gray-500">Or sign up with email</span>
+          <span className="px-2 bg-card text-muted-foreground">Or sign up with email</span>
         </div>
       </div>
 
@@ -156,11 +153,11 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
         </div>
         
         {error && (
-          <div className="text-red-600 text-sm text-center">{error}</div>
+          <div className="text-destructive text-sm text-center bg-destructive/10 border border-destructive/20 rounded-lg p-3">{error}</div>
         )}
         
         {success && (
-          <div className="text-green-600 text-sm text-center">{success}</div>
+          <div className="text-emerald-600 dark:text-emerald-400 text-sm text-center bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 rounded-lg p-3">{success}</div>
         )}
 
         <Button type="submit" disabled={loading} className="w-full">
@@ -171,9 +168,9 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
       <div className="text-center">
         <button
           onClick={onToggleMode}
-          className="text-blue-600 hover:text-blue-500 text-sm"
+          className="text-primary hover:text-primary/80 text-sm transition-colors"
         >
-          Already have an account? Sign in
+          Already have an account? <span className="font-medium">Sign in</span>
         </button>
       </div>
     </div>

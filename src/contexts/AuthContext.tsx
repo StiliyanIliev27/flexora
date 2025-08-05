@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { createBrowserSupabaseClient } from '@/lib/supabase'
 import type { AuthContextType, AuthUser, UserProfile } from '@/types/auth.types'
+import { redirect } from 'next/navigation'
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
@@ -158,6 +159,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signOut = async () => {
     const { error } = await supabase.auth.signOut()
     if (error) throw error
+    else {
+      redirect('/')
+    }
   }
 
   const resetPassword = async (email: string) => {
