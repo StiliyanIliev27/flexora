@@ -16,6 +16,7 @@ interface UserBase {
   full_name: string | null
   avatar_url: string | null
   role: 'user' | 'instructor'
+  language_preference: string
   created_at: string
   updated_at: string
 }

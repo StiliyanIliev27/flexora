@@ -25,73 +25,74 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { useAuth } from "@/contexts/AuthContext"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 // Flexora navigation data
-const getFlexoraNavigation = (userRole: "user" | "instructor") => {
+const getFlexoraNavigation = (userRole: "user" | "instructor", t: (key: any) => string) => {
   const baseNavigation = [
     {
-      title: "Dashboard",
+      title: t('nav.dashboard'),
       url: "/dashboard",
       icon: LayoutDashboard,
       isActive: true,
     },
     {
-      title: "Workouts",
+      title: t('nav.workouts'),
       url: "/workouts",
       icon: Dumbbell,
       items: [
         {
-          title: "My Workouts",
+          title: t('nav.myWorkouts'),
           url: "/workouts",
         },
         {
-          title: "Exercise Library",
+          title: t('nav.exerciseLibrary'),
           url: "/workouts/exercises",
         },
         {
-          title: "Create Workout",
+          title: t('nav.createWorkout'),
           url: "/workouts/create",
         },
       ],
     },
     {
-      title: "Nutrition",
+      title: t('nav.nutrition'),
       url: "/nutrition",
       icon: Apple,
       items: [
         {
-          title: "Meal Plans",
+          title: t('nav.mealPlanning'),
           url: "/nutrition/plans",
         },
         {
-          title: "Food Library",
+          title: t('nav.mealLibrary'),
           url: "/nutrition/foods",
         },
         {
-          title: "Track Meals",
+          title: t('nav.nutritionTracking'),
           url: "/nutrition/track",
         },
       ],
     },
     {
-      title: "Progress",
+      title: t('nav.progress'),
       url: "/progress",
       icon: TrendingUp,
       items: [
         {
-          title: "Overview",
+          title: t('nav.overview'),
           url: "/progress",
         },
         {
-          title: "Body Measurements",
+          title: t('nav.measurements'),
           url: "/progress/measurements",
         },
         {
-          title: "Photos",
+          title: t('nav.progressPhotos'),
           url: "/progress/photos",
         },
         {
-          title: "Achievements",
+          title: t('nav.achievements'),
           url: "/progress/achievements",
         },
       ],
@@ -102,35 +103,35 @@ const getFlexoraNavigation = (userRole: "user" | "instructor") => {
   if (userRole === "instructor") {
     baseNavigation.push(
       {
-        title: "Clients",
+        title: t('nav.clients'),
         url: "/clients",
         icon: Users,
         items: [
           {
-            title: "All Clients",
+            title: t('nav.allClients'),
             url: "/clients",
           },
           {
-            title: "Invitations",
+            title: t('nav.invitations'),
             url: "/clients/invitations",
           },
           {
-            title: "Progress Reports",
+            title: t('nav.progressReports'),
             url: "/clients/reports",
           },
         ],
       },
       {
-        title: "Schedule",
+        title: t('nav.schedule'),
         url: "/schedule",
         icon: Calendar,
         items: [
           {
-            title: "Appointments",
+            title: t('nav.appointments'),
             url: "/schedule/appointments",
           },
           {
-            title: "Availability",
+            title: t('nav.availability'),
             url: "/schedule/availability",
           },
         ],
@@ -143,11 +144,12 @@ const getFlexoraNavigation = (userRole: "user" | "instructor") => {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { user, profile, loading } = useAuth()
+  const { t } = useLanguage()
   const [currentRole, setCurrentRole] = React.useState<"user" | "instructor">(
     profile?.role || "user"
   )
 
-  const navigationItems = getFlexoraNavigation(currentRole)
+  const navigationItems = getFlexoraNavigation(currentRole, t)
 
   const handleRoleChange = (role: "user" | "instructor") => {
     setCurrentRole(role)

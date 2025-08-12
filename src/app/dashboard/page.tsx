@@ -1,5 +1,8 @@
+"use client"
+
 import { AppSidebar } from "@/components/app-sidebar"
 import { HeaderControls } from "@/components/header-controls"
+import { useLanguage } from "@/contexts/LanguageContext"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -16,6 +19,8 @@ import {
 } from "@/components/ui/sidebar"
 
 export default function DashboardPage() {
+  const { t } = useLanguage()
+  
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -31,12 +36,12 @@ export default function DashboardPage() {
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
                   <BreadcrumbLink href="/dashboard">
-                    Dashboard
+                    {t('nav.dashboard')}
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Overview</BreadcrumbPage>
+                  <BreadcrumbPage>{t('nav.overview')}</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -48,32 +53,32 @@ export default function DashboardPage() {
         <div className="flex flex-1 flex-col gap-6 p-6 pt-0">
           {/* Welcome Section */}
           <div className="mt-6">
-            <h1 className="text-3xl font-bold tracking-tight">Welcome to Flexora</h1>
+            <h1 className="text-3xl font-bold tracking-tight">{t('dashboard.welcome')}</h1>
             <p className="text-muted-foreground">
-              Track your fitness journey and reach your goals
+              {t('dashboard.subtitle')}
             </p>
           </div>
 
           {/* Dashboard Cards */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <div className="bg-card border rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-2">Today's Workout</h3>
+              <h3 className="font-semibold text-lg mb-2">{t('dashboard.todaysWorkout')}</h3>
               <p className="text-sm text-muted-foreground">Push Day - Upper Body</p>
               <p className="text-2xl font-bold mt-2 text-emerald-600">45 min</p>
             </div>
             <div className="bg-card border rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-2">Calories Today</h3>
-              <p className="text-sm text-muted-foreground">Goal: 2,200 kcal</p>
+              <h3 className="font-semibold text-lg mb-2">{t('dashboard.caloriesToday')}</h3>
+              <p className="text-sm text-muted-foreground">{t('dashboard.goal')}: 2,200 kcal</p>
               <p className="text-2xl font-bold mt-2 text-amber-600">1,850</p>
             </div>
             <div className="bg-card border rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-2">Weight Progress</h3>
-              <p className="text-sm text-muted-foreground">This month</p>
+              <h3 className="font-semibold text-lg mb-2">{t('dashboard.weightProgress')}</h3>
+              <p className="text-sm text-muted-foreground">{t('dashboard.thisMonth')}</p>
               <p className="text-2xl font-bold mt-2 text-indigo-600">-2.3 kg</p>
             </div>
             <div className="bg-card border rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-2">Streak</h3>
-              <p className="text-sm text-muted-foreground">Workout days</p>
+              <h3 className="font-semibold text-lg mb-2">{t('dashboard.streak')}</h3>
+              <p className="text-sm text-muted-foreground">{t('dashboard.workoutDays')}</p>
               <p className="text-2xl font-bold mt-2 text-green-600">12 days</p>
             </div>
           </div>
@@ -81,7 +86,7 @@ export default function DashboardPage() {
           {/* Recent Activity */}
           <div className="grid gap-6 md:grid-cols-2">
             <div className="bg-card border rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-4">Recent Workouts</h3>
+              <h3 className="font-semibold text-lg mb-4">{t('dashboard.recentWorkouts')}</h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                   <div>
@@ -101,15 +106,15 @@ export default function DashboardPage() {
             </div>
             
             <div className="bg-card border rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-4">Quick Actions</h3>
+              <h3 className="font-semibold text-lg mb-4">{t('dashboard.quickActions')}</h3>
               <div className="grid gap-3">
                 <button className="p-3 bg-indigo-50 dark:bg-indigo-950 border border-indigo-200 dark:border-indigo-800 rounded-lg text-left hover:bg-indigo-100 dark:hover:bg-indigo-900 transition-colors">
-                  <p className="font-medium text-indigo-900 dark:text-indigo-100">Start Today's Workout</p>
+                  <p className="font-medium text-indigo-900 dark:text-indigo-100">{t('dashboard.startTodaysWorkout')}</p>
                   <p className="text-sm text-indigo-600 dark:text-indigo-400">Push Day - Upper Body</p>
                 </button>
                 <button className="p-3 bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 rounded-lg text-left hover:bg-emerald-100 dark:hover:bg-emerald-900 transition-colors">
-                  <p className="font-medium text-emerald-900 dark:text-emerald-100">Log Meal</p>
-                  <p className="text-sm text-emerald-600 dark:text-emerald-400">Track your nutrition</p>
+                  <p className="font-medium text-emerald-900 dark:text-emerald-100">{t('dashboard.logMeal')}</p>
+                  <p className="text-sm text-emerald-600 dark:text-emerald-400">{t('dashboard.trackNutrition')}</p>
                 </button>
               </div>
             </div>

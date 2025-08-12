@@ -13,6 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useLanguage } from "@/contexts/LanguageContext"
 import { useLanguages } from "@/hooks/useLanguages"
 import type { LanguageOption } from "@/types/language.types"
 import Image from "next/image"
@@ -23,29 +24,21 @@ interface HeaderControlsProps {
 
 export function HeaderControls({ hasNotifications = false }: HeaderControlsProps) {
   const { theme, setTheme } = useTheme()
-  const { languages, loading: languagesLoading } = useLanguages()
-  const [currentLanguage, setCurrentLanguage] = React.useState<LanguageOption | null>(null)
-
-  // Set default language when languages are loaded
-  React.useEffect(() => {
-    if (languages.length > 0 && !currentLanguage) {
-      // Try to get saved language from localStorage or default to first language
-      const savedLanguage = localStorage.getItem('flexora-language')
-      const defaultLang = savedLanguage 
-        ? languages.find(lang => lang.code === savedLanguage) || languages[0]
-        : languages[0]
-      setCurrentLanguage(defaultLang)
-    }
-  }, [languages, currentLanguage])
+  const { currentLanguage, changeLanguage, isLoading: languagesLoading, t } = useLanguage()
+  const { languages } = useLanguages() // Still need this for the dropdown options
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light")
   }
 
-  const handleLanguageChange = (language: LanguageOption) => {
-    setCurrentLanguage(language)
-    localStorage.setItem('flexora-language', language.code)
-    // TODO: Implement actual language switching logic
+  const handleLanguageChange = async (language: LanguageOption) => {
+    try {
+      await changeLanguage(language)
+      // Success feedback could be added here if needed
+    } catch (error) {
+      console.error('Failed to change language:', error)
+      // Error feedback could be added here if needed
+    }
   }
 
   // Show loading state or fallback if languages haven't loaded
@@ -107,7 +100,7 @@ export function HeaderControls({ hasNotifications = false }: HeaderControlsProps
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-56">
-          <DropdownMenuLabel>Choose Language</DropdownMenuLabel>
+          <DropdownMenuLabel>{t('auth.chooseLanguage')}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           {languages.map((language) => (
             <DropdownMenuItem

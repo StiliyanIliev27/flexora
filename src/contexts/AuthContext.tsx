@@ -109,7 +109,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           email: authUser.user?.email || '',
           full_name: authUser.user?.user_metadata?.full_name || null,
           avatar_url: authUser.user?.user_metadata?.avatar_url || null,
-          role: 'user'
+          role: 'user',
+          language_preference: 'en' // Default to English
         })
         .select()
         .single()

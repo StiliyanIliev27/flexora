@@ -15,6 +15,7 @@ export interface UserProfile {
   role: 'user' | 'instructor'
   created_at: string
   updated_at: string
+  language_preference: string
 }
 
 export interface AuthContextType {
