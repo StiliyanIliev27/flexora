@@ -7,7 +7,7 @@ import { SkeletonLayout } from '@/components/loading'
 import { useAuth } from '@/contexts/AuthContext'
 import { Dumbbell, Heart, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true)

@@ -7,6 +7,7 @@ import {
   Apple,
   TrendingUp,
   Users,
+  User,
   Calendar,
   Settings,
   FileText,
@@ -47,7 +48,7 @@ const getFlexoraNavigation = (userRole: "user" | "instructor", t: (key: any) => 
         },
         {
           title: t('nav.exerciseLibrary'),
-          url: "/workouts/exercises",
+          url: "/exercises",
         },
         {
           title: t('nav.createWorkout'),

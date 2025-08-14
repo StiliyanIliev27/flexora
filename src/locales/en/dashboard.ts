@@ -1,0 +1,16 @@
+export const dashboard = {
+  welcome: 'Welcome to Flexora',
+  subtitle: 'Track your fitness journey and reach your goals',
+  todaysWorkout: "Today's Workout",
+  caloriesToday: 'Calories Today',
+  weightProgress: 'Weight Progress',
+  streak: 'Streak',
+  recentWorkouts: 'Recent Workouts',
+  quickActions: 'Quick Actions',
+  startTodaysWorkout: "Start Today's Workout",
+  logMeal: 'Log Meal',
+  trackNutrition: 'Track your nutrition',
+  workoutDays: 'Workout days',
+  thisMonth: 'This month',
+  goal: 'Goal',
+} as const

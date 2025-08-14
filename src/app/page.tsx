@@ -1,7 +1,7 @@
 'use client'
 
 import { useAuth } from '@/contexts/AuthContext'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 import { LoadingSpinner } from '@/components/loading'
 import Link from 'next/link'
 import { Brain, TrendingUp, Users, Dumbbell, Apple, Heart } from 'lucide-react'

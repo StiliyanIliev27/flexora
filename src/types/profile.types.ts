@@ -92,21 +92,21 @@ export interface ExerciseSearchResults {
   filters: ExerciseFilters
 }
 
-// Workout availability options
+// Workout availability options (values only, labels will be translated)
 export const WORKOUT_AVAILABILITY_OPTIONS = [
-  { value: 1, label: '1 day per week' },
-  { value: 2, label: '2 days per week' },
-  { value: 3, label: '3 days per week' },
-  { value: 4, label: '4 days per week' },
-  { value: 5, label: '5 days per week' },
-  { value: 6, label: '6 days per week' },
-  { value: 7, label: '7 days per week' },
+  { value: 1, key: 'oneDayPerWeek' },
+  { value: 2, key: 'twoDaysPerWeek' },
+  { value: 3, key: 'threeDaysPerWeek' },
+  { value: 4, key: 'fourDaysPerWeek' },
+  { value: 5, key: 'fiveDaysPerWeek' },
+  { value: 6, key: 'sixDaysPerWeek' },
+  { value: 7, key: 'sevenDaysPerWeek' },
 ] as const
 
 export type WorkoutAvailability = typeof WORKOUT_AVAILABILITY_OPTIONS[number]['value']
 
-// Gender options for forms
+// Gender options for forms (values only, labels will be translated)
 export const GENDER_OPTIONS = [
-  { value: 'male', label: 'Male' },
-  { value: 'female', label: 'Female' }
+  { value: 'male', key: 'male' },
+  { value: 'female', key: 'female' }
 ] as const

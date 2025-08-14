@@ -7,6 +7,7 @@ import {
   CreditCard,
   LogOut,
   Sparkles,
+  User,
 } from "lucide-react"
 
 import {
@@ -30,6 +31,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { useAuth } from "@/contexts/AuthContext"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export function NavUser({
   user,
@@ -42,7 +44,7 @@ export function NavUser({
 }) {
   const { isMobile } = useSidebar()
   const { signOut } = useAuth()
-
+  const { t } = useLanguage()
 
 
   // Generate user initials from name
@@ -102,9 +104,11 @@ export function NavUser({
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <BadgeCheck />
-                Account
+              <DropdownMenuItem asChild>
+                <a href="/profile" className="flex items-center gap-2 w-full">
+                  <User />
+                  {t('profile.title')}
+                </a>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <CreditCard />

@@ -46,12 +46,18 @@ export const en = {
     error: 'Error',
     success: 'Success',
     save: 'Save',
+    saving: 'Saving...',
     cancel: 'Cancel',
     edit: 'Edit',
     delete: 'Delete',
     back: 'Back',
     next: 'Next',
     previous: 'Previous',
+    complete: 'complete',
+    found: 'found',
+    selected: 'selected',
+    showing: 'Showing',
+    of: 'of',
   },
 
   // Auth
@@ -193,6 +199,7 @@ export const en = {
     exerciseError: 'Failed to process exercise',
     noExercisesFound: 'No exercises found',
     loadingExercises: 'Loading exercises...',
+    custom: 'Custom',
   },
 
   // Fitness Goals

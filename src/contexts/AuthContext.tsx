@@ -180,7 +180,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     signUp,
     signInWithGoogle,
     signOut,
-    resetPassword
+    resetPassword,
+    fetchUserProfile
   }
 
   return (

@@ -49,12 +49,18 @@ export const bg = {
     error: 'Грешка',
     success: 'Успех',
     save: 'Запази',
+    saving: 'Запазва...',
     cancel: 'Отказ',
     edit: 'Редактирай',
     delete: 'Изтрий',
     back: 'Назад',
     next: 'Следващ',
     previous: 'Предишен',
+    complete: 'завършено',
+    found: 'намерени',
+    selected: 'избрани',
+    showing: 'Показване',
+    of: 'от',
   },
 
   // Auth
@@ -196,6 +202,7 @@ export const bg = {
     exerciseError: 'Неуспех при обработка на упражнението',
     noExercisesFound: 'Не са намерени упражнения',
     loadingExercises: 'Зареждане на упражнения...',
+    custom: 'Персонализирано',
   },
 
   // Fitness Goals
