@@ -176,6 +176,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     user,
     profile,
     loading,
+    supabase,
     signIn,
     signUp,
     signInWithGoogle,

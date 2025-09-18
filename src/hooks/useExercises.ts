@@ -304,12 +304,11 @@ export function useExercises() {
     ])
   }, [])
 
-  // Fetch exercises when filters change
+  // Fetch exercises when filters change or on initial load
   useEffect(() => {
-    if (equipment.length > 0 && muscleGroups.length > 0) {
-      fetchExercises(currentPage)
-    }
-  }, [filters, equipment.length, muscleGroups.length, fetchExercises, currentPage])
+    // Always fetch exercises on initial load, don't wait for lookup data
+    fetchExercises(currentPage)
+  }, [filters, fetchExercises, currentPage])
 
   const searchResults: ExerciseSearchResults = {
     exercises,
