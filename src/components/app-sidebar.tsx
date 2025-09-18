@@ -47,12 +47,16 @@ const getFlexoraNavigation = (userRole: "user" | "instructor", t: (key: any) => 
           url: "/workouts",
         },
         {
-          title: t('nav.exerciseLibrary'),
-          url: "/exercises",
+          title: t('nav.workoutPlans'),
+          url: "/workouts/plans",
         },
         {
-          title: t('nav.createWorkout'),
-          url: "/workouts/create",
+          title: t('nav.planBuilder'),
+          url: "/workouts/builder",
+        },
+        {
+          title: t('nav.exerciseLibrary'),
+          url: "/exercises",
         },
       ],
     },

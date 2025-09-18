@@ -529,7 +529,7 @@ export function ProfileForm() {
                   <SelectContent>
                     {GENDER_OPTIONS.map(option => (
                       <SelectItem key={option.value} value={option.value}>
-                        {t(`profile.${option.key}` as keyof typeof import('@/locales/en/profile').profile)}
+                        {t(`profile.${option.key}` as any)}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -580,7 +580,7 @@ export function ProfileForm() {
                         className={`flex items-center justify-between cursor-pointer ${isSelected ? 'opacity-50' : ''}`}
                         disabled={isSelected}
                       >
-                        <span>{t(`fitnessGoals.${getGoalTranslationKey(goal.name)}` as keyof typeof import('@/locales/en').en.fitnessGoals)}</span>
+                        <span>{t(`fitnessGoals.${getGoalTranslationKey(goal.name)}` as any)}</span>
                         {isSelected && (
                           <CheckCircle className="h-4 w-4 text-emerald-600" />
                         )}
@@ -713,7 +713,7 @@ export function ProfileForm() {
                   <SelectContent>
                     {WORKOUT_AVAILABILITY_OPTIONS.map(option => (
                       <SelectItem key={option.value} value={option.value.toString()}>
-                        {t(`profile.${option.key}` as keyof typeof import('@/locales/en/profile').profile)}
+                        {t(`profile.${option.key}` as any)}
                       </SelectItem>
                     ))}
                   </SelectContent>
