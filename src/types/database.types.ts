@@ -93,6 +93,55 @@ interface MuscleGroupBase {
   is_active: boolean
 }
 
+// Workout Plan Types
+interface WorkoutPlanBase {
+  id: string
+  user_id: string
+  name: string
+  description: string | null
+  duration_weeks: number
+  is_active: boolean
+  is_public: boolean
+  created_at: string
+  updated_at: string
+}
+
+interface WorkoutDayBase {
+  id: string
+  workout_plan_id: string
+  day_of_week: number // 0=Sunday, 1=Monday, etc.
+  day_name: string | null
+  is_rest_day: boolean
+  notes: string | null
+  created_at: string
+}
+
+interface WorkoutExerciseBase {
+  id: string
+  workout_day_id: string
+  exercise_id: string
+  exercise_order: number
+  default_sets: number | null
+  default_reps: number | null
+  default_weight: number | null
+  default_rest_seconds: number
+  default_rpe: number | null
+  notes: string | null
+  created_at: string
+}
+
+interface ExerciseSetBase {
+  id: string
+  workout_exercise_id: string
+  set_number: number
+  reps: number
+  weight: number | null
+  rest_seconds: number
+  rpe: number | null
+  notes: string | null
+  created_at: string
+}
+
 export interface Database {
   public: {
     Tables: {
@@ -148,6 +197,39 @@ export interface Database {
         Row: MuscleGroupBase
         Insert: Omit<MuscleGroupBase, 'id'> & { id?: string }
         Update: Partial<Omit<MuscleGroupBase, 'id'>>
+      }
+      workout_plans: {
+        Row: WorkoutPlanBase
+        Insert: Omit<WorkoutPlanBase, 'id' | 'created_at' | 'updated_at'> & {
+          id?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: Partial<Omit<WorkoutPlanBase, 'id' | 'created_at' | 'updated_at'>>
+      }
+      workout_days: {
+        Row: WorkoutDayBase
+        Insert: Omit<WorkoutDayBase, 'id' | 'created_at'> & {
+          id?: string
+          created_at?: string
+        }
+        Update: Partial<Omit<WorkoutDayBase, 'id' | 'created_at'>>
+      }
+      workout_exercises: {
+        Row: WorkoutExerciseBase
+        Insert: Omit<WorkoutExerciseBase, 'id' | 'created_at'> & {
+          id?: string
+          created_at?: string
+        }
+        Update: Partial<Omit<WorkoutExerciseBase, 'id' | 'created_at'>>
+      }
+      exercise_sets: {
+        Row: ExerciseSetBase
+        Insert: Omit<ExerciseSetBase, 'id' | 'created_at'> & {
+          id?: string
+          created_at?: string
+        }
+        Update: Partial<Omit<ExerciseSetBase, 'id' | 'created_at'>>
       }
     }
     Views: {

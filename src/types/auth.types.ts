@@ -1,4 +1,4 @@
-import { User } from '@supabase/supabase-js'
+import { User, SupabaseClient } from '@supabase/supabase-js'
 
 export interface AuthUser extends User {
   user_metadata: {
@@ -22,6 +22,7 @@ export interface AuthContextType {
   user: AuthUser | null
   profile: UserProfile | null
   loading: boolean
+  supabase: SupabaseClient
   signIn: (email: string, password: string) => Promise<void>
   signUp: (email: string, password: string, fullName: string) => Promise<void>
   signInWithGoogle: () => Promise<void>
