@@ -8,7 +8,13 @@ export const translations = {
 
 export type TranslationKey = keyof typeof en
 
-// Enhanced nested translation key types
+// Enhanced nested translation key types with support for deeper nesting
+type WorkoutKeys = keyof typeof en.workouts
+type DaysOfWeekKeys = keyof typeof en.workouts.daysOfWeek
+type ValidationKeys = keyof typeof en.workouts.validation
+type SubstituteReasonKeys = keyof typeof en.workouts.substituteReason
+type A11yKeys = keyof typeof en.workouts.a11y
+
 export type NestedTranslationKey = 
   | `nav.${keyof typeof en.nav}`
   | `dashboard.${keyof typeof en.dashboard}`
@@ -16,6 +22,11 @@ export type NestedTranslationKey =
   | `auth.${keyof typeof en.auth}`
   | `profile.${keyof typeof en.profile}`
   | `exercises.${keyof typeof en.exercises}`
+  | `workouts.${WorkoutKeys}`
+  | `workouts.daysOfWeek.${DaysOfWeekKeys}`
+  | `workouts.validation.${ValidationKeys}`
+  | `workouts.substituteReason.${SubstituteReasonKeys}`
+  | `workouts.a11y.${A11yKeys}`
   | `fitnessGoals.${keyof typeof en.fitnessGoals}`
   | `equipmentCategories.${keyof typeof en.equipmentCategories}`
   | `muscleGroups.${keyof typeof en.muscleGroups}`

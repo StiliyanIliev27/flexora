@@ -7,6 +7,7 @@ export const common = {
   cancel: 'Отказ',
   edit: 'Редактирай',
   delete: 'Изтрий',
+  remove: 'Премахни',
   back: 'Назад',
   next: 'Следващ',
   previous: 'Предишен',

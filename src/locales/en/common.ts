@@ -7,6 +7,7 @@ export const common = {
   cancel: 'Cancel',
   edit: 'Edit',
   delete: 'Delete',
+  remove: 'Remove',
   back: 'Back',
   next: 'Next',
   previous: 'Previous',

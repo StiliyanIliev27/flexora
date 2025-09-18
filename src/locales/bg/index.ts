@@ -4,6 +4,7 @@ import { auth } from './auth'
 import { dashboard } from './dashboard'
 import { profile } from './profile'
 import { exercises } from './exercises'
+import { workouts } from './workouts'
 
 export const bg = {
   // Common translations
@@ -23,6 +24,9 @@ export const bg = {
   
   // Exercises
   exercises,
+  
+  // Workouts
+  workouts,
   
   // Fitness Goals (keeping existing structure for now)
   fitnessGoals: {
