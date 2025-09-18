@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from 'react'
 import { AppSidebar } from "@/components/app-sidebar"
 import { HeaderControls } from "@/components/header-controls"
 import { ExerciseLibrary } from "@/components/exercises/ExerciseLibrary"
@@ -18,10 +19,26 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { LoadingSpinner } from '@/components/loading/LoadingSpinner'
 
 export default function ExercisesPage() {
   const { t } = useLanguage()
+  const [isClient, setIsClient] = useState(false)
   
+  // Prevent hydration mismatch by only rendering on client
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+  
+  // Show loading state during hydration to prevent mismatch
+  if (!isClient) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    )
+  }
+
   return (
     <SidebarProvider>
       <AppSidebar />
